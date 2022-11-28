@@ -1,0 +1,4 @@
+StudentName,Email,Password,Phone,ParentID,Gender
+Intisher,ints@gmailcom,1234,90225987500,6,Male
+Aysha,aysha@gmail.com,1234,90227564199,6,Female
+Ikram,inkram@gmail.com,1234,80188990021,6,Male

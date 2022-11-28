@@ -1,0 +1,55 @@
+<?php
+use App\Models\Subject;
+?>
+
+@extends('student.navigation')
+
+@section('content')
+<div class="mainSection-title">
+    <div class="row">
+        <div class="col-12">
+            <div
+              class="d-flex justify-content-between align-items-center flex-wrap gr-15"
+            >
+                <div class="d-flex flex-column">
+                    <h4>{{ get_phrase('Syllabus') }}</h4>
+                    <ul class="d-flex align-items-center eBreadcrumb-2">
+                        <li><a href="#">{{ get_phrase('Home') }}</a></li>
+                        <li><a href="#">{{ get_phrase('Academic') }}</a></li>
+                        <li><a href="#">{{ get_phrase('Syllabus') }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="eSection-wrap pb-2">
+            <table id="basic-datatable" class="table eTable">
+                <thead>
+                    <tr>
+                        <th>{{ get_phrase('Title') }}</th>
+                        <th>{{ get_phrase('Syllabus') }}</th>
+                        <th>{{ get_phrase('Subject') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($syllabuses as $syllabus)
+                        <tr>
+                            <td>{{ $syllabus['title'] }}</td>
+                            <td><a href="{{ asset('public/assets/uploads/syllabus') }}/{{ $syllabus['file'] }}" class="btn btn-primary btn-sm bi bi-download" download>{{ get_phrase('Download') }}</a></td>
+                            <td>
+                                <?php $subjects = Subject::find($syllabus['subject_id']); ?>
+                                {{ $subjects->name }}
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            {!! $syllabuses->links() !!}
+        </div>
+    </div>
+</div>
+@endsection
